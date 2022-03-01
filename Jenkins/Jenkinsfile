@@ -4,7 +4,8 @@ pipeline {
     environment{
         CREATE_SCHEMA = "true"
         RUN_APP = "false"
-        DATABASE_URI = sqlite:///data.db
+        DATABASE_URI = "sqlite:///data.db"
+      }
     stages {
         stage('Setup') {
             steps { 
@@ -18,18 +19,17 @@ pipeline {
                 //
             }
         }
-        stage('Create Schema') {
+        stage('Create Schema') { 
            steps {
                script{
                    if(env.CREATE_SCHEMA == "true"){
                       sh "bash jenkins/create_schema.sh"
                       
+                    }
+                }
             }
-        }
-    }
-}   
-
-          stage('Run') {
+        } 
+        stage('Run') {
             
             steps {
                 if(env.RUN_SCHEMA == "true"){
@@ -37,5 +37,5 @@ pipeline {
                 //
             }
         }
-    }
+    }      
 }
