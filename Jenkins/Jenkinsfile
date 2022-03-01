@@ -34,7 +34,7 @@ pipeline {
             steps {
                 if(env.RUN_SCHEMA == "true"){
                       sh "bash/jenkins/run_app.py"
-                //
+                }
             }
         }
     }      
