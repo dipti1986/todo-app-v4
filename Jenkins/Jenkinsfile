@@ -30,10 +30,11 @@ pipeline {
             }
         } 
         stage('Run') {
-            
             steps {
-                if(env.RUN_SCHEMA == "true"){
+                script{
+                    if(env.RUN_SCHEMA == "true"){
                       sh "bash/jenkins/run_app.py"
+                    }
                 }
             }
         }
